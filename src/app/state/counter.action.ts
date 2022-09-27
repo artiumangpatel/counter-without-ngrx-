@@ -9,3 +9,7 @@ export const reset = createAction ('reset');
 export const customIncrement = createAction('customincrement',
 props<{count:number}>()
 );
+console.log("customIncrement"+customIncrement);
+//using selector for store data
+export const changeChannelName = createAction('changeChannelName');
+console.log("changeChannelName in action"+changeChannelName);
