@@ -7,12 +7,17 @@ import { CounterOutputComponent } from './counter/counter-output/counter-output.
 import { CounterButtonsComponent } from './counter/counter-buttons/counter-buttons.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
-import {  _counterReducer } from './state/counter.reducer';
+
 import { CustomCounterInputComponent } from './counter/custom-counter-input/custom-counter-input.component';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { PostsListComponent } from './posts/posts-list/posts-list.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { appReducer } from './store/app/app.state';
+
+
 
 @NgModule({
   declarations: [
@@ -29,7 +34,8 @@ import { PostsListComponent } from './posts/posts-list/posts-list.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule ,
-    StoreModule.forRoot( {counter:_counterReducer})
+    StoreModule.forRoot(appReducer),
+    StoreDevtoolsModule.instrument({ logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
